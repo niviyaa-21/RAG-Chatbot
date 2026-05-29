@@ -86,6 +86,11 @@ const styles = `
   .chat-bubble { padding: 14px 18px; border-radius: 16px; font-size: 14px; line-height: 1.7; }
   .chat-bubble.bot { background: white; color: #111827; border-bottom-left-radius: 4px; border: 1px solid #e5e7eb; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
   .chat-bubble.user { background: #2563eb; color: white; border-bottom-right-radius: 4px; }
+  .chat-bubble.bot strong { font-weight: 600; color: #111827; }
+  .chat-bubble.bot ul { padding-left: 18px; margin: 6px 0; }
+  .chat-bubble.bot li { margin-bottom: 4px; }
+  .chat-bubble.bot .md-section { margin-bottom: 12px; }
+  .chat-bubble.bot .md-heading { font-weight: 600; font-size: 14px; color: #111827; margin-bottom: 4px; }
 
   .chat-sources { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px; }
   .chat-source-tag { font-size: 11px; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 10px; padding: 2px 8px; font-weight: 500; }
@@ -130,6 +135,22 @@ const EXISTING_DOCS = [
   "code-of-conduct", "company-overview", "it-security-policy",
   "onboarding-guide", "performance-review", "resignation-policy",
 ];
+
+function renderMarkdown(text) {
+  return text.split("\n").map((line, i) => {
+    if (!line.trim()) return <br key={i} />;
+    // Bold: **text**
+    const parts = line.split(/(\*\*[^*]+\*\*)/g).map((part, j) =>
+      part.startsWith("**") && part.endsWith("**")
+        ? <strong key={j}>{part.slice(2, -2)}</strong>
+        : part
+    );
+    if (line.startsWith("- ") || line.startsWith("• ")) {
+      return <li key={i}>{parts.map((p, j) => typeof p === "string" ? p.replace(/^[-•] /, "") : p)}</li>;
+    }
+    return <p key={i} style={{marginBottom: 4}}>{parts}</p>;
+  });
+}
 
 export default function App() {
   const [tab, setTab] = useState("chat");
@@ -276,7 +297,7 @@ export default function App() {
         {tab === "chat" && (
           <div className="chat-page">
             <div className="chat-banner">
-              💬 Powered by Groq AI + {EXISTING_DOCS.length} SWS AI company documents. Ask anything about company policies.
+              💬 Powered by {EXISTING_DOCS.length} SWS AI company documents. Ask anything about company policies.
             </div>
 
             <div className="chat-messages">
@@ -294,7 +315,7 @@ export default function App() {
                     {msg.role === "bot" ? "💬" : "You"}
                   </div>
                   <div>
-                    <div className={`chat-bubble ${msg.role}`}>{msg.text}</div>
+                    <div className={`chat-bubble ${msg.role}`}>{msg.role === "bot" ? <ul style={{listStyle:"none",padding:0}}>{renderMarkdown(msg.text)}</ul> : msg.text}</div>
                     {msg.role === "bot" && msg.sources?.length > 0 && (
                       <div className="chat-sources">
                         <span className="chat-sources-label">Sources used:</span>
