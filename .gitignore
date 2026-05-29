@@ -1,0 +1,17 @@
+# Environment
+.env
+
+# ChromaDB
+backend/chroma_db/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Node
+node_modules/
+frontend/dist/
+
+# Vite
+frontend/.vite/

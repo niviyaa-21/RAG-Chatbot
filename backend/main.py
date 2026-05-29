@@ -1,8 +1,9 @@
 import os
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import shutil
 from langchain_groq import ChatGroq
 from rag import retrieve_chunks
 
@@ -65,6 +66,17 @@ Please answer based only on the context above."""
         "sources": sources,
         "chunks_used": len(chunks)
     }
+
+@app.post("/api/upload")
+async def upload(file: UploadFile = File(...)):
+    try:
+        dest = os.path.join("../documents", file.filename)
+        with open(dest, "wb") as f:
+            shutil.copyfileobj(file.file, f)
+        os.system("python ingest.py")
+        return {"success": True, "filename": file.filename}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
 
 @app.get("/health")
 def health():
