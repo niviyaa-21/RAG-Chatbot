@@ -192,7 +192,6 @@ export default function App() {
 
       {/* NAVBAR */}
       <nav className="navbar">
-        <button className="nav-back" onClick={() => window.history.back()}>← Back</button>
         <div className="nav-divider" />
         <div className="nav-logo">📄</div>
         <span className="nav-title">SWS AI Document Hub</span>
