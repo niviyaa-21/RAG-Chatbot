@@ -18,15 +18,47 @@
         "version": "2.6.2",
         "cells": [
           {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": -1,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Trust Boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              "Trust Boundary"
+            ],
+            "id": "58da7005-58b7-47d3-a4f4-1e49666303d1",
+            "source": {
+              "x": 260,
+              "y": 120
+            },
+            "target": {
+              "x": 260,
+              "y": 530
+            },
+            "vertices": []
+          },
+          {
             "position": {
-              "x": 160,
-              "y": 180
+              "x": 129.99999999999986,
+              "y": 160
             },
             "size": {
-              "width": 60,
-              "height": 60
+              "width": 90,
+              "height": 90
             },
             "attrs": {
+              "text": {
+                "text": "Public\nLogin Page"
+              },
               "body": {
                 "stroke": "#333333",
                 "strokeWidth": 1.5,
@@ -35,6 +67,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -118,10 +151,9 @@
               ]
             },
             "id": "edd5f895-0940-4747-b7e7-e3a0d083309a",
-            "zIndex": 1,
             "data": {
               "type": "tm.Process",
-              "name": "Process",
+              "name": "Public\nLogin Page",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -131,7 +163,29 @@
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "10ace18b-ac70-451c-9b9c-761adb18929c",
+                  "title": " Credential Spoofing",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "An attacker uses automated brute-force scripts to guess valid user passwords.",
+                  "mitigation": "Implement Multi-Factor Authentication (MFA) and strong password rules.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -140,10 +194,13 @@
               "y": 250
             },
             "size": {
-              "width": 60,
-              "height": 60
+              "width": 90,
+              "height": 120
             },
             "attrs": {
+              "text": {
+                "text": "REST API\nBackend"
+              },
               "body": {
                 "stroke": "#333333",
                 "strokeWidth": 1.5,
@@ -152,6 +209,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -235,10 +293,9 @@
               ]
             },
             "id": "5641b6f6-2173-415d-b90a-36b656b03ba9",
-            "zIndex": 2,
             "data": {
               "type": "tm.Process",
-              "name": "Process",
+              "name": "REST API\nBackend",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -248,19 +305,57 @@
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "19b58bfc-304d-4aee-b18c-06b1e7805cf0",
+                  "title": "Tampering",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Attacker modifies parameters in transit to alter business logic",
+                  "mitigation": "Enforce TLS 1.3 encryption and request signing",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                },
+                {
+                  "id": "5d75b8e5-1961-409b-b5b9-c6f64d7addd3",
+                  "title": "Dos Attack",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "Malicious actors flood API endpoints to exhaust server resources",
+                  "mitigation": "Implement rate limiting and an API Gateway",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
             "position": {
-              "x": 524,
-              "y": 180
+              "x": 504,
+              "y": 165
             },
             "size": {
-              "width": 60,
-              "height": 60
+              "width": 100,
+              "height": 80
             },
             "attrs": {
+              "text": {
+                "text": "Admin \nDashBoard"
+              },
               "body": {
                 "stroke": "#333333",
                 "strokeWidth": 1.5,
@@ -269,6 +364,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -352,10 +448,9 @@
               ]
             },
             "id": "9ce559aa-e31a-458b-a634-187aece3971c",
-            "zIndex": 3,
             "data": {
               "type": "tm.Process",
-              "name": "Process",
+              "name": "Admin \nDashBoard",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -365,7 +460,42 @@
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "98f55ba3-9ac4-4ddb-8663-aa1717a7132f",
+                  "title": "Repudiation",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": " A rogue admin alters settings and deletes local logs to deny the action.",
+                  "mitigation": "Send tamper-proof, append-only logs to a centralized SIEM",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                },
+                {
+                  "id": "5ca24803-f3e1-4985-b1df-24e0a02665ae",
+                  "title": "Elevation of Privilege",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Elevation of privilege",
+                  "description": "A normal user manipulates tokens to access admin dashboard views.",
+                  "mitigation": "Strictly validate user roles on the server side. ",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -378,6 +508,9 @@
               "height": 60
             },
             "attrs": {
+              "text": {
+                "text": "MySQL Database\n"
+              },
               "topLine": {
                 "strokeWidth": 1.5,
                 "strokeDasharray": null
@@ -389,6 +522,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 4,
             "ports": {
               "groups": {
                 "top": {
@@ -472,10 +606,9 @@
               ]
             },
             "id": "d9a5d045-e696-4893-bf0c-dfd89fa60665",
-            "zIndex": 4,
             "data": {
               "type": "tm.Store",
-              "name": "Store",
+              "name": "MySQL Database\n",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -486,7 +619,27 @@
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "b57a889a-15f4-415d-ac70-8db1012cefd2",
+                  "title": "Information ",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "An attacker uses SQL injection to read sensitive database tables",
+                  "mitigation": "Use parameterized queries and database encryption at rest.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             }
           },
           {
@@ -585,8 +738,7 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
                 "targetMarker": {
                   "name": "block"
                 },
@@ -607,216 +759,33 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [
-                {
-                  "id": "12be5248-4a59-42ce-96ea-55b20805f7fe",
-                  "title": "New STRIDE threat",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 1,
-                  "score": ""
-                }
-              ],
+              "threats": [],
               "trustBoundaryIds": []
             },
             "labels": [
               "Data Flow"
             ],
-            "id": "940a7668-dada-45ea-b53b-0548c694fa78",
+            "id": "96f6039f-904c-47de-8de0-c12532111cd7",
             "source": {
               "cell": "5641b6f6-2173-415d-b90a-36b656b03ba9",
-              "port": "2c810184-2a72-4910-b93b-9e5fb7c6b3e7"
+              "port": "c4493514-9e56-4580-9b40-ac0addb959e1"
             },
             "target": {
               "cell": "d9a5d045-e696-4893-bf0c-dfd89fa60665",
               "port": "2f50e720-905b-45e8-919e-966024d73c8e"
             },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
-              ],
-              "name": null
-            }
+            "vertices": []
           }
         ]
       }
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 1
+    "threatTop": 7
   }
 }
